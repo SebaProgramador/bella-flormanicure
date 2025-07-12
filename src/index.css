@@ -1,0 +1,29 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to top left, #dcedc8, #b2ebf2);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3em;
+  text-align: center;
+  color: #ec407a;
+  margin-top: 20px;
+}
+
+.poema {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8em;
+  color: #c2185b;
+  text-align: center;
+  padding: 20px;
+  line-height: 1.6;
+  white-space: pre-line;
+}
