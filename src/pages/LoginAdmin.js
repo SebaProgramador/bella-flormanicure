@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/fotos/logo.jpg";
 import fondoLogin from "../assets/fotos/fondo-login.jpg";
 
+
 export default function LoginAdmin() {
   const navigate = useNavigate();
   const [usuario, setUsuario] = useState("");
@@ -10,12 +11,46 @@ export default function LoginAdmin() {
   const [error, setError] = useState("");
 
   const handleLogin = () => {
-    if (usuario === "admin" && clave === "admin123") {
-      navigate("/admin");
-    } else {
-      setError("❌ Usuario o clave incorrecta.");
-    }
+  if (usuario === "admin" && clave === "admin123") {
+    sessionStorage.setItem("adminLogueado", "true");
+    navigate("/admin");
+  } else {
+    setError("❌ Usuario o clave incorrecta.");
+  }
+const AdminPanel = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("adminLogueado");
+    navigate("/login");
   };
+
+  return (
+    <div>
+      {/* Tu contenido del AdminPanel */}
+
+      <button
+        onClick={handleLogout}
+        style={{
+          marginTop: "20px",
+          background: "#ef5350",
+          color: "white",
+          border: "none",
+          padding: "10px 20px",
+          borderRadius: "10px",
+          fontWeight: "bold",
+          cursor: "pointer",
+        }}
+      >
+        🔒 Cerrar sesión
+      </button>
+    </div>
+  );
+};
+
+
+};
+
 
   return (
     <div

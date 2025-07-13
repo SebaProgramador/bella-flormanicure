@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { cerrarSesionAdmin } from "../auth";
 import {
   collection,
   getDocs,
@@ -133,12 +134,26 @@ export default function AdminPanel() {
         >
           📝 Ir a Ficha
         </button>
+
         <button
           onClick={() => setMostrarHistorial(!mostrarHistorial)}
           style={botonEstilo("#ffe082", "#ef6c00")}
         >
           {mostrarHistorial ? "🔒 Ocultar Historial" : "📖 Ver Historial"}
         </button>
+
+<button
+  onClick={() => {
+    cerrarSesionAdmin();
+    navigate("/login");
+  }}
+>
+  🚪 Cerrar sesión
+</button>
+
+
+
+
       </div>
 
       {/* LISTA DE RESERVAS */}

@@ -1,3 +1,4 @@
+// auth.js
 
 export const guardarSesionAdmin = () => {
   localStorage.setItem("adminAutenticado", "true");
