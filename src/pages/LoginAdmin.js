@@ -11,7 +11,7 @@ export default function LoginAdmin() {
   const [error, setError] = useState("");
 
   const handleLogin = () => {
-  if (usuario === "admin" && clave === "admin123") {
+  if (usuario === "admin" && clave === "Bell@Flor2025") {
     sessionStorage.setItem("adminLogueado", "true");
     navigate("/admin");
   } else {

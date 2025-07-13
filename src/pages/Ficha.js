@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, addDoc, getDocs, Timestamp } from "firebase/firestore";
 import { db } from "../firebaseConfig";
+import emailjs from "@emailjs/browser";
 
 export default function Ficha() {
   const navigate = useNavigate();
@@ -76,6 +77,41 @@ export default function Ficha() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // ✅ ENVÍA EMAIL a ADMIN y CLIENTE
+  const enviarEmails = async (datos) => {
+    const templateParams = {
+      nombre: datos.nombre,
+      email: datos.email,
+      direccion: datos.direccion,
+      dia: datos.dia,
+      hora: datos.hora,
+      colores: datos.colores,
+      tecnica: datos.tecnica,
+      estilo: datos.estilo,
+    };
+
+    try {
+      // Email para la ADMIN
+      await emailjs.send(
+        "service_uouc02c",
+        "template_dueña123",
+        templateParams,
+        "2XRsP0YyyNIUB-wnm"
+      );
+
+      // Email para el CLIENTE
+      await emailjs.send(
+        "service_uouc02c",
+        "template_cliente123",
+        templateParams,
+        "2XRsP0YyyNIUB-wnm"
+      );
+    } catch (error) {
+      console.error("Error enviando emails:", error);
+      throw error; // para que el catch del submit lo capture
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -98,6 +134,8 @@ export default function Ficha() {
 
       setReservas([...reservas, { ...form, id: docRef.id }]);
 
+      await enviarEmails(form);
+
       setMensaje("✅ ¡Reserva exitosa! Revisa tu correo 📩");
 
       setForm({
@@ -115,7 +153,6 @@ export default function Ficha() {
       setTimeout(() => {
         navigate("/");
       }, 3000);
-
     } catch (error) {
       console.error("Error al reservar:", error);
       setMensaje("❌ Error al reservar. Intenta nuevamente.");
@@ -164,12 +201,7 @@ export default function Ficha() {
           <div style={{ fontWeight: "bold" }}>Selecciona un Día:</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
             {Object.keys(horariosSemana).map((dia) => (
-              <button
-                key={dia}
-                type="button"
-                onClick={() => handleDiaClick(dia)}
-                style={{ backgroundColor: form.dia === dia ? "#004d40" : "#a7ffeb", color: form.dia === dia ? "#fff" : "#004d40", padding: "10px 20px", border: "none", borderRadius: "20px", cursor: "pointer", fontWeight: "bold" }}
-              >
+              <button key={dia} type="button" onClick={() => handleDiaClick(dia)} style={{ backgroundColor: form.dia === dia ? "#004d40" : "#a7ffeb", color: form.dia === dia ? "#fff" : "#004d40", padding: "10px 20px", border: "none", borderRadius: "20px", cursor: "pointer", fontWeight: "bold" }}>
                 {dia}
               </button>
             ))}
@@ -182,13 +214,7 @@ export default function Ficha() {
                 {horariosDisponibles.map((hora) => {
                   const reservado = horasReservadasDelDia.includes(hora);
                   return (
-                    <button
-                      key={hora}
-                      type="button"
-                      onClick={() => handleHoraClick(hora)}
-                      disabled={reservado}
-                      style={{ backgroundColor: form.hora === hora ? "#004d40" : reservado ? "#ccc" : "#a7ffeb", color: reservado ? "#666" : form.hora === hora ? "#fff" : "#004d40", padding: "10px 16px", border: "none", borderRadius: "20px", cursor: reservado ? "not-allowed" : "pointer", fontWeight: "bold" }}
-                    >
+                    <button key={hora} type="button" onClick={() => handleHoraClick(hora)} disabled={reservado} style={{ backgroundColor: form.hora === hora ? "#004d40" : reservado ? "#ccc" : "#a7ffeb", color: reservado ? "#666" : form.hora === hora ? "#fff" : "#004d40", padding: "10px 16px", border: "none", borderRadius: "20px", cursor: reservado ? "not-allowed" : "pointer", fontWeight: "bold" }}>
                       {hora}
                     </button>
                   );
