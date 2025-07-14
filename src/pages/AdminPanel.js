@@ -94,13 +94,13 @@ export default function AdminPanel() {
         backgroundColor: "#ffffff",
         borderRadius: "20px",
         fontFamily: "'Segoe UI', sans-serif",
-        boxShadow: "0 6px 18px rgba(0,0,0,0.15)",
+        boxShadow: "0 6px 18px rgba(0,0,0,0.1)",
       }}
     >
       <h1
         style={{
           textAlign: "center",
-          color: "#2e7d32",
+          color: "#00796b",
           fontSize: "2.6rem",
           marginBottom: 10,
           fontWeight: "bold",
@@ -118,7 +118,7 @@ export default function AdminPanel() {
         }}
       >
         Total de reservas activas:{" "}
-        <strong style={{ color: "#2e7d32" }}>{reservas.length}</strong>
+        <strong style={{ color: "#00796b" }}>{reservas.length}</strong>
       </p>
 
       {/* BOTONES DE NAVEGACIÓN */}
@@ -133,19 +133,19 @@ export default function AdminPanel() {
       >
         <button
           onClick={() => navigate("/")}
-          style={botonEstilo("#a5d6a7", "#2e7d32")}
+          style={botonEstilo("#b2dfdb", "#004d40")}
         >
           Volver al Inicio
         </button>
         <button
           onClick={() => navigate("/ficha")}
-          style={botonEstilo("#a5d6a7", "#2e7d32")}
+          style={botonEstilo("#b2dfdb", "#004d40")}
         >
           Ir a Ficha
         </button>
         <button
           onClick={() => setMostrarHistorial(!mostrarHistorial)}
-          style={botonEstilo("#a5d6a7", "#2e7d32")}
+          style={botonEstilo("#4db6ac", "#ffffff")}
         >
           {mostrarHistorial ? "Ocultar Historial" : "Ver Historial"}
         </button>
@@ -154,7 +154,7 @@ export default function AdminPanel() {
             cerrarSesionAdmin();
             navigate("/login");
           }}
-          style={botonEstilo("#ffffff", "#2e7d32")}
+          style={botonEstilo("#ffffff", "#00796b")}
         >
           Cerrar sesión
         </button>
@@ -176,13 +176,13 @@ export default function AdminPanel() {
             <div style={{ marginTop: 10, display: "flex", gap: 10, flexWrap: "wrap" }}>
               <button
                 onClick={() => confirmarReserva(r)}
-                style={botonEstilo("#a5d6a7", "#2e7d32")}
+                style={botonEstilo("#b2dfdb", "#004d40")}
               >
                 Confirmar
               </button>
               <button
                 onClick={() => eliminarReserva(r.id)}
-                style={botonEstilo("#ef9a9a", "#b71c1c")}
+                style={botonEstilo("#ffcdd2", "#b71c1c")}
               >
                 Eliminar
               </button>
@@ -194,13 +194,13 @@ export default function AdminPanel() {
       {/* HISTORIAL DE RESERVAS CONFIRMADAS */}
       {mostrarHistorial && (
         <div style={{ marginTop: 50 }}>
-          <h2 style={{ textAlign: "center", color: "#2e7d32" }}>
+          <h2 style={{ textAlign: "center", color: "#00796b" }}>
             Historial de Reservas Confirmadas
           </h2>
 
           <p style={{ textAlign: "center", color: "#555", fontWeight: "bold" }}>
             Total confirmadas:{" "}
-            <strong style={{ color: "#2e7d32" }}>{historial.length}</strong>
+            <strong style={{ color: "#00796b" }}>{historial.length}</strong>
           </p>
 
           {historial.length === 0 ? (
@@ -209,7 +209,7 @@ export default function AdminPanel() {
             </p>
           ) : (
             historial.map((r, i) => (
-              <div key={r.id} style={cardEstilo("#ffffff")}>
+              <div key={r.id} style={cardEstilo()}>
                 <p><strong>Cliente #{i + 1}</strong></p>
                 <p><strong>Nombre:</strong> {r.nombre}</p>
                 <p><strong>Email:</strong> {r.email}</p>
@@ -237,27 +237,27 @@ export default function AdminPanel() {
   );
 }
 
-// 💚 BOTÓN ESTILO
-const botonEstilo = (bg, color) => ({
+// 🌿 ESTILO DE BOTONES
+const botonEstilo = (bg = "#4db6ac", color = "#ffffff") => ({
   backgroundColor: bg,
   color: color,
   padding: "10px 20px",
   border: "none",
-  borderRadius: "25px",
-  fontWeight: "bold",
+  borderRadius: "30px",
+  fontWeight: "600",
   cursor: "pointer",
-  boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
-  transition: "transform 0.2s",
   fontSize: "15px",
+  boxShadow: "0 3px 10px rgba(0, 0, 0, 0.12)",
+  transition: "all 0.2s ease-in-out",
   minWidth: "130px",
 });
 
-// 💚 TARJETAS DE RESERVA
+// 🌿 ESTILO DE TARJETAS
 const cardEstilo = () => ({
   backgroundColor: "#ffffff",
-  padding: "18px",
-  borderRadius: "16px",
-  borderLeft: "6px solid #2e7d32",
+  padding: "20px",
+  borderRadius: "18px",
+  borderLeft: "6px solid #4db6ac",
   marginBottom: "20px",
-  boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
+  boxShadow: "0 6px 15px rgba(0,0,0,0.06)",
 });
