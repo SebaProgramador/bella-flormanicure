@@ -91,7 +91,7 @@ export default function AdminPanel() {
         padding: 30,
         maxWidth: 1000,
         margin: "30px auto",
-        backgroundColor: "#fff8f0",
+        backgroundColor: "#ffffff",
         borderRadius: "20px",
         fontFamily: "'Segoe UI', sans-serif",
         boxShadow: "0 6px 18px rgba(0,0,0,0.15)",
@@ -100,8 +100,8 @@ export default function AdminPanel() {
       <h1
         style={{
           textAlign: "center",
-          color: "#bf360c",
-          fontSize: "2.4rem",
+          color: "#2e7d32",
+          fontSize: "2.6rem",
           marginBottom: 10,
           fontWeight: "bold",
         }}
@@ -109,8 +109,16 @@ export default function AdminPanel() {
         📋 Panel de Administración
       </h1>
 
-      <p style={{ textAlign: "center", fontSize: "18px", color: "#5d4037" }}>
-        Total de reservas activas: <strong>{reservas.length}</strong>
+      <p
+        style={{
+          textAlign: "center",
+          fontSize: "18px",
+          color: "#4e4e4e",
+          fontWeight: "600",
+        }}
+      >
+        Total de reservas activas:{" "}
+        <strong style={{ color: "#2e7d32" }}>{reservas.length}</strong>
       </p>
 
       {/* BOTONES DE NAVEGACIÓN */}
@@ -120,46 +128,42 @@ export default function AdminPanel() {
           justifyContent: "center",
           gap: "15px",
           margin: "20px 0",
+          flexWrap: "wrap",
         }}
       >
         <button
           onClick={() => navigate("/")}
-          style={botonEstilo("#ffccbc", "#bf360c")}
+          style={botonEstilo("#a5d6a7", "#2e7d32")}
         >
           🏠 Volver al Inicio
         </button>
         <button
           onClick={() => navigate("/ficha")}
-          style={botonEstilo("#c8e6c9", "#2e7d32")}
+          style={botonEstilo("#a5d6a7", "#2e7d32")}
         >
           📝 Ir a Ficha
         </button>
-
         <button
           onClick={() => setMostrarHistorial(!mostrarHistorial)}
-          style={botonEstilo("#ffe082", "#ef6c00")}
+          style={botonEstilo("#a5d6a7", "#2e7d32")}
         >
           {mostrarHistorial ? "🔒 Ocultar Historial" : "📖 Ver Historial"}
         </button>
-
-<button
-  onClick={() => {
-    cerrarSesionAdmin();
-    navigate("/login");
-  }}
->
-  🚪 Cerrar sesión
-</button>
-
-
-
-
+        <button
+          onClick={() => {
+            cerrarSesionAdmin();
+            navigate("/login");
+          }}
+          sstyle={botonEstilo("#ffffff", "#2e7d32")}
+        >
+          🚪 Cerrar sesión
+        </button>
       </div>
 
       {/* LISTA DE RESERVAS */}
       <div style={{ marginTop: 30 }}>
         {reservas.map((r, i) => (
-          <div key={r.id} style={cardEstilo("#fff")}>
+          <div key={r.id} style={cardEstilo()}>
             <p><strong>👩 Cliente #{i + 1}</strong></p>
             <p><strong>📛 Nombre:</strong> {r.nombre}</p>
             <p><strong>📧 Email:</strong> {r.email}</p>
@@ -169,10 +173,10 @@ export default function AdminPanel() {
             <p><strong>💅 Técnica:</strong> {r.tecnica}</p>
             <p><strong>✨ Estilo:</strong> {r.estilo}</p>
 
-            <div style={{ marginTop: 10, display: "flex", gap: 10 }}>
+            <div style={{ marginTop: 10, display: "flex", gap: 10, flexWrap: "wrap" }}>
               <button
                 onClick={() => confirmarReserva(r)}
-                style={botonEstilo("#a5d6a7", "#1b5e20")}
+                style={botonEstilo("#a5d6a7", "#2e7d32")}
               >
                 💰 Pagado
               </button>
@@ -190,12 +194,13 @@ export default function AdminPanel() {
       {/* HISTORIAL DE RESERVAS CONFIRMADAS */}
       {mostrarHistorial && (
         <div style={{ marginTop: 50 }}>
-          <h2 style={{ textAlign: "center", color: "#bf360c" }}>
+          <h2 style={{ textAlign: "center", color: "#2e7d32" }}>
             📖 Historial de Reservas Confirmadas
           </h2>
 
-          <p style={{ textAlign: "center", color: "#5d4037" }}>
-            Total confirmadas: <strong>{historial.length}</strong>
+          <p style={{ textAlign: "center", color: "#555", fontWeight: "bold" }}>
+            Total confirmadas:{" "}
+            <strong style={{ color: "#2e7d32" }}>{historial.length}</strong>
           </p>
 
           {historial.length === 0 ? (
@@ -204,7 +209,7 @@ export default function AdminPanel() {
             </p>
           ) : (
             historial.map((r, i) => (
-              <div key={r.id} style={cardEstilo("#fefefe")}>
+              <div key={r.id} style={cardEstilo("#ffffff")}>
                 <p><strong>✅ Cliente #{i + 1}</strong></p>
                 <p><strong>📛 Nombre:</strong> {r.nombre}</p>
                 <p><strong>📧 Email:</strong> {r.email}</p>
@@ -218,7 +223,7 @@ export default function AdminPanel() {
                 <div style={{ marginTop: 10 }}>
                   <button
                     onClick={() => eliminarHistorial(r.id)}
-                    style={botonEstilo("#f48fb1", "#880e4f")}
+                    style={botonEstilo("#f8bbd0", "#880e4f")}
                   >
                     🗑 Eliminar del Historial
                   </button>
@@ -232,13 +237,13 @@ export default function AdminPanel() {
   );
 }
 
-// ESTILOS REUTILIZABLES
+// 💚 BOTÓN ESTILO VERDE AGUA
 const botonEstilo = (bg, color) => ({
   backgroundColor: bg,
   color: color,
   padding: "10px 20px",
   border: "none",
-  borderRadius: "20px",
+  borderRadius: "25px",
   fontWeight: "bold",
   cursor: "pointer",
   boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
@@ -247,11 +252,12 @@ const botonEstilo = (bg, color) => ({
   minWidth: "130px",
 });
 
-const cardEstilo = (bg) => ({
-  backgroundColor: bg,
+// 💚 TARJETAS CON DETALLES DE RESERVA
+const cardEstilo = () => ({
+  backgroundColor: "#ffffff",
   padding: "18px",
   borderRadius: "16px",
-  borderLeft: "6px solid #ff7043",
+  borderLeft: "6px solid #2e7d32",
   marginBottom: "20px",
-  boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+  boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
 });
