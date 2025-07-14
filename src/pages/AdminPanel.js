@@ -58,7 +58,7 @@ export default function AdminPanel() {
       setReservas(reservas.filter((r) => r.id !== reserva.id));
       setHistorial((prev) => [...prev, reservaConfirmada]);
     } catch (error) {
-      console.error("❌ Error al confirmar:", error);
+      console.error("Error al confirmar:", error);
       alert("Error al confirmar reserva.");
     }
   };
@@ -69,7 +69,7 @@ export default function AdminPanel() {
         await deleteDoc(doc(db, "reservas", id));
         setReservas(reservas.filter((r) => r.id !== id));
       } catch (error) {
-        console.error("❌ Error al eliminar:", error);
+        console.error("Error al eliminar:", error);
       }
     }
   };
@@ -80,7 +80,7 @@ export default function AdminPanel() {
         await deleteDoc(doc(db, "historialConfirmados", id));
         setHistorial(historial.filter((h) => h.id !== id));
       } catch (error) {
-        console.error("❌ Error al eliminar del historial:", error);
+        console.error("Error al eliminar del historial:", error);
       }
     }
   };
@@ -106,7 +106,7 @@ export default function AdminPanel() {
           fontWeight: "bold",
         }}
       >
-        📋 Panel de Administración
+        Panel de Administración
       </h1>
 
       <p
@@ -135,28 +135,28 @@ export default function AdminPanel() {
           onClick={() => navigate("/")}
           style={botonEstilo("#a5d6a7", "#2e7d32")}
         >
-          🏠 Volver al Inicio
+          Volver al Inicio
         </button>
         <button
           onClick={() => navigate("/ficha")}
           style={botonEstilo("#a5d6a7", "#2e7d32")}
         >
-          📝 Ir a Ficha
+          Ir a Ficha
         </button>
         <button
           onClick={() => setMostrarHistorial(!mostrarHistorial)}
           style={botonEstilo("#a5d6a7", "#2e7d32")}
         >
-          {mostrarHistorial ? "🔒 Ocultar Historial" : "📖 Ver Historial"}
+          {mostrarHistorial ? "Ocultar Historial" : "Ver Historial"}
         </button>
         <button
           onClick={() => {
             cerrarSesionAdmin();
             navigate("/login");
           }}
-          sstyle={botonEstilo("#ffffff", "#2e7d32")}
+          style={botonEstilo("#ffffff", "#2e7d32")}
         >
-          🚪 Cerrar sesión
+          Cerrar sesión
         </button>
       </div>
 
@@ -164,27 +164,27 @@ export default function AdminPanel() {
       <div style={{ marginTop: 30 }}>
         {reservas.map((r, i) => (
           <div key={r.id} style={cardEstilo()}>
-            <p><strong>👩 Cliente #{i + 1}</strong></p>
-            <p><strong>📛 Nombre:</strong> {r.nombre}</p>
-            <p><strong>📧 Email:</strong> {r.email}</p>
-            <p><strong>📍 Dirección:</strong> {r.direccion}</p>
-            <p><strong>📅 Día:</strong> {r.dia} — <strong>🕒 Hora:</strong> {r.hora}</p>
-            <p><strong>🎨 Colores:</strong> {r.colores}</p>
-            <p><strong>💅 Técnica:</strong> {r.tecnica}</p>
-            <p><strong>✨ Estilo:</strong> {r.estilo}</p>
+            <p><strong>Cliente #{i + 1}</strong></p>
+            <p><strong>Nombre:</strong> {r.nombre}</p>
+            <p><strong>Email:</strong> {r.email}</p>
+            <p><strong>Dirección:</strong> {r.direccion}</p>
+            <p><strong>Día:</strong> {r.dia} — <strong>Hora:</strong> {r.hora}</p>
+            <p><strong>Colores:</strong> {r.colores}</p>
+            <p><strong>Técnica:</strong> {r.tecnica}</p>
+            <p><strong>Estilo:</strong> {r.estilo}</p>
 
             <div style={{ marginTop: 10, display: "flex", gap: 10, flexWrap: "wrap" }}>
               <button
                 onClick={() => confirmarReserva(r)}
                 style={botonEstilo("#a5d6a7", "#2e7d32")}
               >
-                💰 Pagado
+                Confirmar
               </button>
               <button
                 onClick={() => eliminarReserva(r.id)}
                 style={botonEstilo("#ef9a9a", "#b71c1c")}
               >
-                🗑 Eliminar
+                Eliminar
               </button>
             </div>
           </div>
@@ -195,7 +195,7 @@ export default function AdminPanel() {
       {mostrarHistorial && (
         <div style={{ marginTop: 50 }}>
           <h2 style={{ textAlign: "center", color: "#2e7d32" }}>
-            📖 Historial de Reservas Confirmadas
+            Historial de Reservas Confirmadas
           </h2>
 
           <p style={{ textAlign: "center", color: "#555", fontWeight: "bold" }}>
@@ -210,22 +210,22 @@ export default function AdminPanel() {
           ) : (
             historial.map((r, i) => (
               <div key={r.id} style={cardEstilo("#ffffff")}>
-                <p><strong>✅ Cliente #{i + 1}</strong></p>
-                <p><strong>📛 Nombre:</strong> {r.nombre}</p>
-                <p><strong>📧 Email:</strong> {r.email}</p>
-                <p><strong>📍 Dirección:</strong> {r.direccion}</p>
-                <p><strong>📅 Día:</strong> {r.dia} — <strong>🕒 Hora:</strong> {r.hora}</p>
-                <p><strong>🎨 Colores:</strong> {r.colores}</p>
-                <p><strong>💅 Técnica:</strong> {r.tecnica}</p>
-                <p><strong>✨ Estilo:</strong> {r.estilo}</p>
-                <p><strong>📆 Confirmado:</strong> {r.fechaConfirmacion}</p>
+                <p><strong>Cliente #{i + 1}</strong></p>
+                <p><strong>Nombre:</strong> {r.nombre}</p>
+                <p><strong>Email:</strong> {r.email}</p>
+                <p><strong>Dirección:</strong> {r.direccion}</p>
+                <p><strong>Día:</strong> {r.dia} — <strong>Hora:</strong> {r.hora}</p>
+                <p><strong>Colores:</strong> {r.colores}</p>
+                <p><strong>Técnica:</strong> {r.tecnica}</p>
+                <p><strong>Estilo:</strong> {r.estilo}</p>
+                <p><strong>Confirmado:</strong> {r.fechaConfirmacion}</p>
 
                 <div style={{ marginTop: 10 }}>
                   <button
                     onClick={() => eliminarHistorial(r.id)}
                     style={botonEstilo("#f8bbd0", "#880e4f")}
                   >
-                    🗑 Eliminar del Historial
+                    Eliminar del Historial
                   </button>
                 </div>
               </div>
@@ -237,7 +237,7 @@ export default function AdminPanel() {
   );
 }
 
-// 💚 BOTÓN ESTILO VERDE AGUA
+// 💚 BOTÓN ESTILO
 const botonEstilo = (bg, color) => ({
   backgroundColor: bg,
   color: color,
@@ -252,7 +252,7 @@ const botonEstilo = (bg, color) => ({
   minWidth: "130px",
 });
 
-// 💚 TARJETAS CON DETALLES DE RESERVA
+// 💚 TARJETAS DE RESERVA
 const cardEstilo = () => ({
   backgroundColor: "#ffffff",
   padding: "18px",
