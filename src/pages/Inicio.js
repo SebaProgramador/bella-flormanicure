@@ -142,8 +142,7 @@ export default function Inicio() {
 
          🌷 <strong>Mi meta </strong> 🌷
         <p style={{ marginTop: "10px" }}>
-          Convertirme en una profesional reconocida, creando experiencias inolvidables  
-          en cada atención de manicure.
+          Convertirme en una profesional reconocida, creando experiencias inolvidables.
         </p>
       </div>
 
