@@ -12,6 +12,7 @@ export default function Ficha() {
     nombre: "",
     email: "",
     direccion: "",
+    telefono: "", // ✅ AGREGADO
     dia: "",
     hora: "",
     colores: "",
@@ -83,6 +84,7 @@ export default function Ficha() {
       nombre: datos.nombre,
       email: datos.email,
       direccion: datos.direccion,
+      telefono: datos.telefono, // ✅ AGREGADO
       dia: datos.dia,
       hora: datos.hora,
       colores: datos.colores,
@@ -108,7 +110,7 @@ export default function Ficha() {
       );
     } catch (error) {
       console.error("Error enviando emails:", error);
-      throw error; // para que el catch del submit lo capture
+      throw error;
     }
   };
 
@@ -142,6 +144,7 @@ export default function Ficha() {
         nombre: "",
         email: "",
         direccion: "",
+        telefono: "", // ✅ LIMPIAR
         dia: "",
         hora: "",
         colores: "",
@@ -186,6 +189,7 @@ export default function Ficha() {
           <input style={inputStyle} name="nombre" placeholder="Tu Nombre" value={form.nombre} onChange={handleChange} required />
           <input style={inputStyle} name="email" placeholder="Tu Correo" value={form.email} onChange={handleChange} required />
           <input style={inputStyle} name="direccion" placeholder="Dirección" value={form.direccion} onChange={handleChange} required />
+          <input style={inputStyle} name="telefono" placeholder="Teléfono (WhatsApp)" value={form.telefono} onChange={handleChange} required /> {/* ✅ NUEVO */}
           <input style={inputStyle} name="colores" placeholder="Colores que deseas" value={form.colores} onChange={handleChange} />
           <select style={inputStyle} name="tecnica" value={form.tecnica} onChange={handleChange}>
             <option value="Marmolado">Marmolado</option>
