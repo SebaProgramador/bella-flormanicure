@@ -167,6 +167,7 @@ export default function AdminPanel() {
             <p><strong>Cliente #{i + 1}</strong></p>
             <p><strong>Nombre:</strong> {r.nombre}</p>
             <p><strong>Email:</strong> {r.email}</p>
+            <p><strong>Teléfono:</strong> {r.telefono}</p>
             <p><strong>Dirección:</strong> {r.direccion}</p>
             <p><strong>Día:</strong> {r.dia} — <strong>Hora:</strong> {r.hora}</p>
             <p><strong>Colores:</strong> {r.colores}</p>
@@ -213,6 +214,7 @@ export default function AdminPanel() {
                 <p><strong>Cliente #{i + 1}</strong></p>
                 <p><strong>Nombre:</strong> {r.nombre}</p>
                 <p><strong>Email:</strong> {r.email}</p>
+                <p><strong>Teléfono:</strong> {r.telefono}</p>
                 <p><strong>Dirección:</strong> {r.direccion}</p>
                 <p><strong>Día:</strong> {r.dia} — <strong>Hora:</strong> {r.hora}</p>
                 <p><strong>Colores:</strong> {r.colores}</p>
