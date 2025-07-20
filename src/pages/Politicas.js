@@ -24,8 +24,8 @@ export default function Politicas() {
       <h1
         style={{
           fontSize: "30px",
-          fontFamily: "'Pacifico', cursive", // Fuente Pacifico para el título
-          color: "#004d40",                // Verde agua
+          fontFamily: "'Pacifico', cursive",
+          color: "#004d40",
           textAlign: "center",
           marginBottom: "35px",
         }}
@@ -38,7 +38,7 @@ export default function Politicas() {
           fontSize: "20px",
           lineHeight: "2.2",
           paddingLeft: "24px",
-          color: "#004d40",  // Texto verde agua
+          color: "#004d40",
         }}
       >
         <li>
@@ -48,6 +48,10 @@ export default function Politicas() {
         <li>
           <span style={{ marginRight: "12px", fontSize: "24px" }}>⏰</span>
           El tiempo de espera es de 10 minutos siempre que exista aviso previo.
+        </li>
+        <li>
+          <span style={{ marginRight: "12px", fontSize: "24px" }}>🕒</span>
+          Tener en consideración que el tiempo de atención es de <strong>1 hora y 45 minutos aprox</strong>.
         </li>
         <li>
           <span style={{ marginRight: "12px", fontSize: "24px" }}>⚠️</span>
@@ -63,7 +67,7 @@ export default function Politicas() {
         </li>
         <li>
           <span style={{ marginRight: "12px", fontSize: "24px" }}>⏳</span>
-          Los pagos se hacen después de haber realizado el trabajo. 
+          Los pagos se hacen después de haber realizado el trabajo.
         </li>
         <li>
           <span style={{ marginRight: "12px", fontSize: "24px" }}>💖</span>
@@ -72,64 +76,63 @@ export default function Politicas() {
       </ul>
 
       <div
-  style={{
-    textAlign: "center",
-    marginTop: 50,
-    display: "flex",
-    justifyContent: "center",
-    gap: "30px",
-    flexWrap: "wrap",
-  }}
->
-  {/* Botón: Volver al Inicio */}
-  <button
-    style={{
-      backgroundColor: "#80cbc4",
-      color: "#ffffff",
-      border: "none",
-      padding: "20px 40px",
-      fontSize: "22px",
-      fontWeight: "bold",
-      borderRadius: "40px",
-      cursor: "pointer",
-      display: "inline-flex",
-      alignItems: "center",
-      gap: "14px",
-      boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)",
-      transition: "transform 0.3s ease-in-out",
-    }}
-    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.08)")}
-    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-    onClick={() => navigate("/")}
-  >
-    🏡 Volver al Inicio
-  </button>
+        style={{
+          textAlign: "center",
+          marginTop: 50,
+          display: "flex",
+          justifyContent: "center",
+          gap: "30px",
+          flexWrap: "wrap",
+        }}
+      >
+        {/* Botón: Volver al Inicio */}
+        <button
+          style={{
+            backgroundColor: "#80cbc4",
+            color: "#ffffff",
+            border: "none",
+            padding: "20px 40px",
+            fontSize: "22px",
+            fontWeight: "bold",
+            borderRadius: "40px",
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "14px",
+            boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)",
+            transition: "transform 0.3s ease-in-out",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.08)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          onClick={() => navigate("/")}
+        >
+          🏡 Volver al Inicio
+        </button>
 
-  {/* Botón: Aceptar y continuar */}
-  <button
-    style={{
-      backgroundColor: "#00796b",
-      color: "#ffffff",
-      border: "none",
-      padding: "20px 40px",
-      fontSize: "22px",
-      fontWeight: "bold",
-      borderRadius: "40px",
-      cursor: "pointer",
-      display: "inline-flex",
-      alignItems: "center",
-      gap: "14px",
-      boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)",
-      transition: "transform 0.3s ease-in-out",
-    }}
-    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.08)")}
-    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-    onClick={handleAceptar}
-  >
-    💅 Aceptar y continuar con la ficha
-  </button>
-</div>
-
+        {/* Botón: Aceptar y continuar */}
+        <button
+          style={{
+            backgroundColor: "#00796b",
+            color: "#ffffff",
+            border: "none",
+            padding: "20px 40px",
+            fontSize: "22px",
+            fontWeight: "bold",
+            borderRadius: "40px",
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "14px",
+            boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)",
+            transition: "transform 0.3s ease-in-out",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.08)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          onClick={handleAceptar}
+        >
+          💅 Aceptar y continuar con la ficha
+        </button>
+      </div>
     </div>
   );
 }

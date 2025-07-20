@@ -131,16 +131,15 @@ export default function Inicio() {
           lineHeight: 1.6,
         }}
       >
-      <section className="seccion">
-  <h2>🎯 Mi propósito</h2>
-  <p>
-    Mi propósito es que cada una de mis clientas resalte su belleza natural a través de la creación de diseños innovadores y únicos.  
-    Me encantaría que cada una salga con una sonrisa y con la satisfacción de que he hecho un trabajo con dedicación, de acuerdo a las expectativas que han puesto en mi trabajo. 💅💖
-  </p>
-</section>
+        <section className="seccion">
+          <h2>🎯 Mi propósito</h2>
+          <p>
+            Mi propósito es que cada una de mis clientas resalte su belleza natural a través de la creación de diseños innovadores y únicos.  
+            Me encantaría que cada una salga con una sonrisa y con la satisfacción de que he hecho un trabajo con dedicación, de acuerdo a las expectativas que han puesto en mi trabajo. 💅💖
+          </p>
+        </section>
 
-
-         🌷 <strong>Mi meta </strong> 🌷
+        🌷 <strong>Mi meta </strong> 🌷
         <p style={{ marginTop: "10px" }}>
           Convertirme en una profesional reconocida, creando experiencias inolvidables.
         </p>
@@ -148,56 +147,56 @@ export default function Inicio() {
 
       {/* Botones */}
       <div
-  style={{
-    display: "flex",
-    justifyContent: "center",
-    gap: "25px",
-    flexWrap: "wrap",
-    marginTop: "50px"
-  }}
->
-  <button
-    onClick={() => navigate("/politicas")}
-    style={{
-      background: "linear-gradient(to right, #4db6ac, #81c784)",
-      color: "white",
-      border: "none",
-      padding: "18px 40px", // más grande
-      borderRadius: "40px",
-      fontSize: "20px", // más grande
-      fontWeight: "bold",
-      cursor: "pointer",
-      boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
-      transition: "transform 0.2s",
-    }}
-    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-  >
-    💖 Agendar cita
-  </button>
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "25px",
+          flexWrap: "wrap",
+          marginTop: "50px"
+        }}
+      >
+        <button
+          onClick={() => navigate("/politicas")}
+          style={{
+            background: "linear-gradient(to right, #4db6ac, #81c784)",
+            color: "white",
+            border: "none",
+            padding: "18px 40px",
+            borderRadius: "40px",
+            fontSize: "20px",
+            fontWeight: "bold",
+            cursor: "pointer",
+            boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
+            transition: "transform 0.2s",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        >
+          💖 Agendar cita
+        </button>
 
-  <button
-    onClick={() => navigate("/login")}
-    style={{
-      background: "#26a69a",
-      color: "white",
-      border: "none",
-      padding: "18px 40px", // más grande
-      borderRadius: "40px",
-      fontSize: "20px", // más grande
-      fontWeight: "bold",
-      cursor: "pointer",
-      boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
-      transition: "transform 0.2s",
-    }}
-    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-  >
-    🔒 Solo ADM
-  </button>
-</div>
+        <button
+          onClick={() => navigate("/login")}
+          style={{
+            background: "#26a69a",
+            color: "white",
+            border: "none",
+            padding: "18px 40px",
+            borderRadius: "40px",
+            fontSize: "20px",
+            fontWeight: "bold",
+            cursor: "pointer",
+            boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
+            transition: "transform 0.2s",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        >
+          🔒 Solo ADM
+        </button>
+      </div>
 
-      {/* Footer con íconos y enlace real */}
+      {/* Footer con íconos */}
       <footer
         style={{
           background: "linear-gradient(135deg, #a7ffeb, #ffffff)",
@@ -253,6 +252,21 @@ export default function Inicio() {
 
         <div style={{ marginTop: "20px", fontSize: "24px" }}>💅🌟🌸</div>
       </footer>
+
+      {/* 📌 Footer legal Bella Flor */}
+      <div
+        style={{
+          textAlign: "center",
+          fontSize: "14px",
+          marginTop: "30px",
+          color: "#004d40",
+          fontFamily: "'Quicksand', sans-serif",
+          paddingBottom: "20px",
+          opacity: 0.8,
+        }}
+      >
+        © {new Date().getFullYear()} <strong>Bella Flor Manicure</strong> — Todos los derechos reservados.
+      </div>
     </div>
   );
 }
