@@ -12,12 +12,12 @@ export default function Ficha() {
     nombre: "",
     email: "",
     direccion: "",
-    telefono: "", // ✅ AGREGADO
+    telefono: "",
     dia: "",
     hora: "",
     colores: "",
     tecnica: "Marmolado",
-    estilo: "Francesa",
+    estilo: "Puntos",
   });
 
   const [reservas, setReservas] = useState([]);
@@ -78,13 +78,12 @@ export default function Ficha() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // ✅ ENVÍA EMAIL a ADMIN y CLIENTE
   const enviarEmails = async (datos) => {
     const templateParams = {
       nombre: datos.nombre,
       email: datos.email,
       direccion: datos.direccion,
-      telefono: datos.telefono, // ✅ AGREGADO
+      telefono: datos.telefono,
       dia: datos.dia,
       hora: datos.hora,
       colores: datos.colores,
@@ -93,21 +92,8 @@ export default function Ficha() {
     };
 
     try {
-      // Email para la ADMIN
-      await emailjs.send(
-        "service_uouc02c",
-        "template_dueña123",
-        templateParams,
-        "2XRsP0YyyNIUB-wnm"
-      );
-
-      // Email para el CLIENTE
-      await emailjs.send(
-        "service_uouc02c",
-        "template_cliente123",
-        templateParams,
-        "2XRsP0YyyNIUB-wnm"
-      );
+      await emailjs.send("service_uouc02c", "template_dueña123", templateParams, "2XRsP0YyyNIUB-wnm");
+      await emailjs.send("service_uouc02c", "template_cliente123", templateParams, "2XRsP0YyyNIUB-wnm");
     } catch (error) {
       console.error("Error enviando emails:", error);
       throw error;
@@ -144,12 +130,12 @@ export default function Ficha() {
         nombre: "",
         email: "",
         direccion: "",
-        telefono: "", // ✅ LIMPIAR
+        telefono: "",
         dia: "",
         hora: "",
         colores: "",
         tecnica: "Marmolado",
-        estilo: "Francesa",
+        estilo: "Puntos",
       });
       setHorariosDisponibles([]);
 
@@ -189,17 +175,23 @@ export default function Ficha() {
           <input style={inputStyle} name="nombre" placeholder="Tu Nombre" value={form.nombre} onChange={handleChange} required />
           <input style={inputStyle} name="email" placeholder="Tu Correo" value={form.email} onChange={handleChange} required />
           <input style={inputStyle} name="direccion" placeholder="Dirección" value={form.direccion} onChange={handleChange} required />
-          <input style={inputStyle} name="telefono" placeholder="Teléfono (WhatsApp)" value={form.telefono} onChange={handleChange} required /> {/* ✅ NUEVO */}
+          <input style={inputStyle} name="telefono" placeholder="Teléfono (WhatsApp)" value={form.telefono} onChange={handleChange} required />
           <input style={inputStyle} name="colores" placeholder="Colores que deseas" value={form.colores} onChange={handleChange} />
+
+          {/* Texto TÉCNICAS */}
+          <div style={{ fontWeight: "bold" }}>Técnica que deseas:</div>
           <select style={inputStyle} name="tecnica" value={form.tecnica} onChange={handleChange}>
             <option value="Marmolado">Marmolado</option>
-            <option value="Encapsulado">Encapsulado</option>
-            <option value="Tradicional">Tradicional</option>
-          </select>
-          <select style={inputStyle} name="estilo" value={form.estilo} onChange={handleChange}>
+            <option value="Stickers al agua">Stickers al agua</option>
             <option value="Francesa">Francesa</option>
-            <option value="Natural">Natural</option>
-            <option value="Decorada">Decorada</option>
+          </select>
+
+          {/* Texto DISEÑOS */}
+          <div style={{ fontWeight: "bold" }}>Diseño que prefieres:</div>
+          <select style={inputStyle} name="estilo" value={form.estilo} onChange={handleChange}>
+            <option value="Puntos">Puntos</option>
+            <option value="Flores">Flores</option>
+            <option value="Hojas">Hojas</option>
           </select>
 
           <div style={{ fontWeight: "bold" }}>Selecciona un Día:</div>
